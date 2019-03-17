@@ -1,0 +1,16 @@
+{
+  "name": "worker",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon"
+  },
+  "author": "Joseph Morse <tamed.lionheart@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "nodemon": "^1.18.10",
+    "redis": "^2.8.0"
+  }
+}
