@@ -35,14 +35,14 @@ app.get('/', (req, res) => {
   res.send('Hi');
 });
 
-app.get('/values/all', async () => {
+app.get('/values/all', async (req, res) => {
   const values = await pgClient.query('SELECT * from values');
 
-  res.end(values.rows);
+  res.send(values.rows);
 });
 
 app.get('/values/current', async (req, res) => {
-  redis.Client.hgetall('values', (err, values) => {
+  redisClient.hgetall('values', (err, values) => {
     res.send(values);
   })
 });
@@ -56,7 +56,7 @@ app.post('/values', async (req, res) => {
 
   redisClient.hset('values', index, 'Nothing yet!');
   redisPublisher.publish('insert', index);
-  pgClient.query('INSTER INTO values(number) VALUES($1)', [index]);
+  pgClient.query('INSERT INTO values(number) VALUES($1)', [index]);
 
   res.send({ working: true });
 });
