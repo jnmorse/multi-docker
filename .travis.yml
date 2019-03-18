@@ -1,0 +1,20 @@
+sudo: required
+services:
+  -docker
+
+before_install:
+  - docker build -t jnmorse/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run jnmorse/react-test npm test -- --coverage
+
+after_success:
+  - docker build -t jnmorse/multi-client ./client
+  - docker build -t jnmorse/multi-nginx ./nginx
+  - docker build -t jnmorse/multi-server ./server
+  - docker build -t jnmorse/multi-worker ./worker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USER" --password-stdin
+  - docker push jnmorse/multi-client
+  - docker push jnmorse/multi-nginx
+  - docker push jnmorse/multi-server
+  - docker push jnmorse/multi-worker
