@@ -18,3 +18,16 @@ after_success:
   - docker push jnmorse/multi-nginx
   - docker push jnmorse/multi-server
   - docker push jnmorse/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-2
+  app: Multi-Docker
+  env: MultiDocker-env
+  bucket_name: elasticbeanstalk-us-east-2-573537116965
+  bucket_path: docker-multi
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
