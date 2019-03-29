@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: worker
-          image: jnmorse/multi-worker
+          image: jnmorse/multi-worker:latest
           env:
             - name: REDIS_HOST
               value: redist-cluster-ip-service

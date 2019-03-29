@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: server
-          image: jnmorse/multi-server
+          image: jnmorse/multi-server:latest
           ports:
             - containerPort: 5000
           env:
