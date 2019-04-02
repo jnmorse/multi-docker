@@ -10,7 +10,7 @@ docker psuh jnmorse/multi-worker:latest
 
 docker push jnmorse/multi-client:$SHA
 docker push jnmorse/multi-server:$SHA
-docker psuh jnmorse/multi-worker:$SHA
+docker push jnmorse/multi-worker:$SHA
 
 kubectl apply -f k8s
 kubectl set image deployments/client-deployment client=jnmorse/multi-client:$SHA
