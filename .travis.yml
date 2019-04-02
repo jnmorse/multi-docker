@@ -11,7 +11,7 @@ before_install:
   ## Install Google Cloud SDK
   - curl https://sdk.cloud.google.com | bash > /dev/null;
   ## Source Bash Information
-  - source $HOME/google-could-sdk/path.bash.inc
+  - source $HOME/google-cloud-sdk/path.bash.inc
   ## Setup Google Cloud
   - gcloud components update kubectl
   - gcloud auth activate-service-account --key-file service-account.json
