@@ -17,6 +17,6 @@ spec:
           image: jnmorse/multi-worker:latest
           env:
             - name: REDIS_HOST
-              value: redist-cluster-ip-service
+              value: redis-cluster-ip-service
             - name: REDIS_PORT
               value: '6379'
